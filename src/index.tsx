@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import mapboxgl from '!mapbox-gl';
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiYm1hZ2FyaW8iLCJhIjoiY2wzZXhoY3FhMDEyNTNkbXJsbGFub3c1byJ9.KWG39E60Y8oNVncmYhLIOw';
+
+if(!navigator.geolocation) {
+  alert('Geolocation is not supported!');
+  throw new Error('Geolocation is not supported!');
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,8 +21,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
